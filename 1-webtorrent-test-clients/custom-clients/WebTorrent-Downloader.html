@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Downloader</title>
+  <!-- Include URL to the latest version of WebTorrent -->
+  <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+
+  <!-- Include URL to time formatting library -->
+  <script src="http://momentjs.com/downloads/moment.min.js"></script>
+  
+  <!-- Encoding -->
+  <meta charset="utf-8"/>
+  
+  <!-- Favicon -->
+  <link
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAwCAYAAACBpyPiAAABm0lEQVRoge3Xv0rDUBTH8R+6WJx8B1Hp4gu4ivamthbJIE1ua9EOOugg6AP4Gjo5uuvo7ujgE/hvKOhSSpJyHOoN19LaRNueXLhfOFBI4H4OgQsFJhT5p/OR2Nsl181N6oyJFWzVD0MhKXLqDW5L6rqifh4KSYHjn3BbUmfxXFk8VxbPlcVzZfFcWTxXFs+VxY8r2vRF5Pi3tNNcSfJ+WjyVq/moIO/Ckrf+P+kgjCPPen/raq+dUmN55Psp8FSu5iMh30MhKSjK4/GI9QNcdzYo+tdJF0iK1+FdUbsiopnxytVBKRZIgp8aPD5QX0DIl2ELjMJPHR4fnGCB3/Bs8BgwYoFheHZ4DOlfoHKwpJ6p20m/PTIDj0FDFqCKtxoKeU/laj6TcNVvXwDIMFz1Y4FC7Tn+AlmHq/oXoIK3bQRcpS+gxgi4Sl+gW5SXxsD1qOQtchtstgEdAbgxcJoAEAIgA+cJ3z9aANYMmwWFf4OhWfyUmwOQA8zEPwB4BMzEfwDoAD38J4B9g6at8G3w39l/mRYAOAAuDJyNL+Ytouwf2FD/AAAAAElFTkSuQmCC"
+    rel="icon" type="image/x-icon">
+</head>
+
+<body>
+  <!-- Title and image -->
+  <h1>WebTorrent Downloader
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAwCAYAAACBpyPiAAABm0lEQVRoge3Xv0rDUBTH8R+6WJx8B1Hp4gu4ivamthbJIE1ua9EOOugg6AP4Gjo5uuvo7ujgE/hvKOhSSpJyHOoN19LaRNueXLhfOFBI4H4OgQsFJhT5p/OR2Nsl181N6oyJFWzVD0MhKXLqDW5L6rqifh4KSYHjn3BbUmfxXFk8VxbPlcVzZfFcWTxXFs+VxY8r2vRF5Pi3tNNcSfJ+WjyVq/moIO/Ckrf+P+kgjCPPen/raq+dUmN55Psp8FSu5iMh30MhKSjK4/GI9QNcdzYo+tdJF0iK1+FdUbsiopnxytVBKRZIgp8aPD5QX0DIl2ELjMJPHR4fnGCB3/Bs8BgwYoFheHZ4DOlfoHKwpJ6p20m/PTIDj0FDFqCKtxoKeU/laj6TcNVvXwDIMFz1Y4FC7Tn+AlmHq/oXoIK3bQRcpS+gxgi4Sl+gW5SXxsD1qOQtchtstgEdAbgxcJoAEAIgA+cJ3z9aANYMmwWFf4OhWfyUmwOQA8zEPwB4BMzEfwDoAD38J4B9g6at8G3w39l/mRYAOAAuDJyNL+Ytouwf2FD/AAAAAElFTkSuQmCC" />
+  </h1>
+  
+  <!-- Client usage information -->
+  Select a torrent file to upload or submit Magnet URI:
+  <br><br>
+  
+  <!-- Actions and file input buttons -->
+  <button onclick="download()">Download File!</button>
+  <button onclick="clearButton()">Clear</button>
+  <input type="file" id="myTorrent" size="50">
+  <br><br>
+  <b>Magnet URI: </b>
+  <input type="text" id="myMagnet" name="myMagnet">
+  <br>
+
+  <!-- HTML elements -->
+  <code id="name"></code>
+  <code id="size"></code>
+  <code id="magnet"></code>
+  <code id="torrent"></code>
+  <code id="uploadspeed"></code>
+  <code id="seedratio"></code>
+  <code id="numberpeers"></code>
+  <code id="timeremaining"></code>
+  <code id="progress"></code>
+  <code id="connectedpeers"></code>
+  <code id="error"></code>
+
+  <script>
+    // Creates instance of WebTorrent client
+    var client = new WebTorrent();
+    var torrentId = ""
+    
+    // Selects HTML elements and connects these with JavaScript variables
+    var $name = document.querySelector('#name')
+    var $size = document.querySelector('#size')
+    var $magnet = document.querySelector('#magnet')
+    var $torrent = document.querySelector('#torrent')
+    var $uploadspeed = document.querySelector('#uploadspeed')
+    var $seedratio = document.querySelector('#seedratio')
+    var $numberpeers = document.querySelector('#numberpeers')
+    var $timeremaining = document.querySelector('#timeremaining')
+    var $progress = document.querySelector('#progress')
+    var $error = document.querySelector('#error')
+    var $connectedpeers = document.querySelector('#connectedpeers')
+
+    // Function to reset all fields in page
+    function clearButton() {
+      $error.innerHTML = '';
+      document.getElementById("myMagnet").value = '';
+      document.getElementById("myTorrent").value = '';
+      document.getElementById("myTorrent").files[0] = '';
+      location.reload();
+    }
+
+    // Function to start downloading file
+    function download(torrentId) {
+      var torrentFile = myTorrent.files[0];
+      var magnetLink = document.getElementById("myMagnet").value;
+      var torrentId = torrentFile;
+      console.log(torrentId)
+      if (torrentId === undefined) {
+        var torrentId = magnetLink;
+      }
+      // On error, display message in console
+      client.on('error', function (err) {
+        $error.innerHTML = '<br>ERROR: ' + (err.message);
+      })
+      // Add torrent or magnet link to client
+      client.add(torrentId, onTorrent)
+
+      // Store client information in the JavaScript variables
+      function onTorrent(torrent) {
+        torrent.files.forEach(function (file) {
+          $name.innerHTML = '<br> Filename: ' + file.name;
+          $size.innerHTML = '<br> Size: ' + (prettyBytes(torrent.length)) + '<br>';
+          $magnet.innerHTML = ' <a href="' + torrent.magnetURI + '">Magnet URI</a> ';
+          $torrent.innerHTML = ' <a download="' + file.name + '.torrent" href="' + torrent.torrentFileBlobURL + '">Torrent File</a> ';
+        })
+        var upinter = setInterval(function () {
+          $uploadspeed.innerHTML = '<br> Upload Speed: ' + (prettyBytes(torrent.uploadSpeed));
+          $seedratio.innerHTML = '<br> Seed Ratio: ' + (torrent.ratio);
+          $numberpeers.innerHTML = '<br> Peers: ' + (torrent.numPeers);
+          $timeremaining.innerHTML = '<br> Time Remaining: ' + (moment.duration(torrent.timeRemaining / 1000,
+            'seconds').humanize());
+          $progress.innerHTML = '<b><br> Progress: ' + ((torrent.progress * 100).toFixed(1) + '%<b><br>');
+          $connectedpeers.innerHTML = '<b><br><br> Connected: <br></b>' + (torrent.wires.map(wire => wire.remoteAddress).join('<br>')) + '<br>';
+        }, 1000)
+
+        // Show download link on page upon completing WebTorrent download
+        torrent.on('done', function () {
+          console.log('Progress: 100%')
+          console.log('Path: ' + torrent.path)
+          torrent.files.forEach(function (file) {
+            console.log('Filename: ' + file.name)
+            file.getBlobURL(function (err, url) {
+              if (err) throw err
+              var a = document.createElement('a')
+              a.download = file.name
+              a.href = url
+              a.textContent = 'Download: ' + file.name
+              a.setAttribute("download", file.name);
+              document.body.appendChild(a);
+              console.log(url);
+            })
+          })
+        })
+      }
+    }
+
+    // Function to convert bytes to human readable format
+    function prettyBytes(num) {
+      var exponent, unit, neg = num < 0,
+        units = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+      if (neg) num = -num
+      if (num < 1) return (neg ? '-' : '') + num + ' B'
+      exponent = Math.min(Math.floor(Math.log(num) / Math.log(1000)), units.length - 1)
+      num = Number((num / Math.pow(1000, exponent)).toFixed(2))
+      unit = units[exponent]
+      return (neg ? '-' : '') + num + ' ' + unit
+    }
+  </script>
+</body>
+
+</html>

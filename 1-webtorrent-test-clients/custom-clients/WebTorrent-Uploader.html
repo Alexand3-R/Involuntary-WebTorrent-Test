@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Uploader</title>
+  <!-- Include URL to the latest version of WebTorrent -->
+  <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+  
+  <!-- Include URL to drag and drop library -->
+  <script src="https://bundle.run/drag-drop@6.0.2"></script>
+  
+  <!-- Encoding -->
+  <meta charset="utf-8"/>
+  
+  <!-- Favicon -->
+  <link
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFCUlEQVRoge2ZbYhUVRjHj0uWL9nLzqwzs7ohJBh+KRvByF4MtsXn+T/nzAscSEyZLdoPqR+CpBdMliQERcugwg9proY4My4JgbXI5lsQYQUZkhpSaYH2RlGkLjp9cGY5e3fu7Mw6M9cP/eHC7sy5z/n9zrn3zpkzSjUp6XR6poh0i8gWAHuI6BNmPkhEu5l5k9b62WQyOatZPFXFWjuZiFYCOMHMhSqPr7XWazOZzB1Bsk8gopXMfL4G8BEHgN+11s+vWrXqlqaSd3V1dYjIAR+wiwAOAdgpIhtEZD0z7wAwCOAfH5ETxpjZTYFPpVL3AvilDMR+IkouW7Zsqt+5mUxmktZaAGSZ+ap3NgB0NhQeQJyZf/N0/JXW+tFaaxlj5gM45BmIIa11VyPYFTNHmfmCB357JpOZNN6ahUKhhZk3eWr+YYyZU092pZSawMwDbkcisq5exUVkhUfiVKVLseYA6PF0sLNuxYvxzgQRvVKXwvF4fCKAH5zi3zXisVcoFFrcewLAX6lUavp1F9ZaP+2OjDEmXQfesjHGzHefTkS08bqLAjjsjMqxOnBWjIjknP6+r/rE3t7em4wx05RSE0qvdXZ23s7MQ84MPNcA5hEREe2Z8Xm+jYloIRFtFZHTJVAAV5j5LDNvA7DZU6y90QLW2smeT+w1oxoZY2YD2F/j2uXnRsOXAmDQuQ/e88I/xsx/1rrwEpEjzRIQkT6n74HhN4hoIYBLnuftrwA2E1GSmRcYYx5n5jVE9JNH4p0mCqx3Bu4bpZRSS5YsCZeBGrDWtpUrYq2dzMyrAZwDcCaRSMxtloDW+jV3pVqy2uIZ+dcLhUJLs6BqCYC3HIHDKpVKTWfmi+60xOPxiUGD+gXAh47AHiUi3e7oL168+KGgISuFmb91eN9QIrLLMToeNGClJJPJuz2X+nLFzEedF7YGDVkpzLzaERiy1rYqZj5ZelFr/WrQkH7p6emZAuCcc7UMKqWUYubPnRl4M2BO32it15Zd+RJRv2P1WcCcZUNEC90nJYBP3TdXOmZX0+n0/QGyjkrxxr3gwF9JJBIPDjew1s5wl8UAjltrbw6QeTgAHmbPZoGIvDSqodb6bc8yYtt4dxSi/dOXR/Ph87Fc25GOfR3jWmJba28VkV5mvuyB3+V3QltxnT9iR0xr/UAtHcf6w89E8qGrkVyoEMmFCrG94ZO1SCQSiblE9DKX2ZIUkb6K37eLG1N/e08sbsy+LyLrrLV3VQs/loS1tpWZ1zDzDmYeAHCm3FIdwBUAL1Q1AsaYecz8o9+6n4i+qAW+kgQz5yt9xygt1ph5QVXwpQC4k4g2MvO/ZYqerRV++MiHT7kS7oaAB/oSEX0EwNQEXk7EGPOkiLzLzB8z80HvBuso+Gt/Xy79H82HL3olZmZnzlBKKWa+r3jpDIrILhHZAOCJpUuX3nZd4NWmLHx/61ORXOicA70umgsf9JMILH7wSik1QiAbejHSF5l6Q0lUgi8noJRSZSVy4dNNlxgL3k/ghpCoBr6SQKAS0VyrrQZ+LAE/idje8Mn4sfiUhgnEcm37q4GvRsBPomNf7JGGCbT3h1YUO7rc3t/aXaltNQJKXZOI5MMHSpfRnKNzptWf3MmsfOie9t3tHWO1q1ZAKaVUQbVEs61zF21fNO7f0uqemgRuxPwvEHSi2dDx4cdjNtwTNE/Naf8g0hnLh7+M5tqykb5I/X7P9cl/9yNRuL2UQtQAAAAASUVORK5CYII="
+    rel="icon" type="image/x-icon">
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <!-- Title and image -->
+  <h1>WebTorrent Uploader
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFCUlEQVRoge2ZbYhUVRjHj0uWL9nLzqwzs7ohJBh+KRvByF4MtsXn+T/nzAscSEyZLdoPqR+CpBdMliQERcugwg9proY4My4JgbXI5lsQYQUZkhpSaYH2RlGkLjp9cGY5e3fu7Mw6M9cP/eHC7sy5z/n9zrn3zpkzSjUp6XR6poh0i8gWAHuI6BNmPkhEu5l5k9b62WQyOatZPFXFWjuZiFYCOMHMhSqPr7XWazOZzB1Bsk8gopXMfL4G8BEHgN+11s+vWrXqlqaSd3V1dYjIAR+wiwAOAdgpIhtEZD0z7wAwCOAfH5ETxpjZTYFPpVL3AvilDMR+IkouW7Zsqt+5mUxmktZaAGSZ+ap3NgB0NhQeQJyZf/N0/JXW+tFaaxlj5gM45BmIIa11VyPYFTNHmfmCB357JpOZNN6ahUKhhZk3eWr+YYyZU092pZSawMwDbkcisq5exUVkhUfiVKVLseYA6PF0sLNuxYvxzgQRvVKXwvF4fCKAH5zi3zXisVcoFFrcewLAX6lUavp1F9ZaP+2OjDEmXQfesjHGzHefTkS08bqLAjjsjMqxOnBWjIjknP6+r/rE3t7em4wx05RSE0qvdXZ23s7MQ84MPNcA5hEREe2Z8Xm+jYloIRFtFZHTJVAAV5j5LDNvA7DZU6y90QLW2smeT+w1oxoZY2YD2F/j2uXnRsOXAmDQuQ/e88I/xsx/1rrwEpEjzRIQkT6n74HhN4hoIYBLnuftrwA2E1GSmRcYYx5n5jVE9JNH4p0mCqx3Bu4bpZRSS5YsCZeBGrDWtpUrYq2dzMyrAZwDcCaRSMxtloDW+jV3pVqy2uIZ+dcLhUJLs6BqCYC3HIHDKpVKTWfmi+60xOPxiUGD+gXAh47AHiUi3e7oL168+KGgISuFmb91eN9QIrLLMToeNGClJJPJuz2X+nLFzEedF7YGDVkpzLzaERiy1rYqZj5ZelFr/WrQkH7p6emZAuCcc7UMKqWUYubPnRl4M2BO32it15Zd+RJRv2P1WcCcZUNEC90nJYBP3TdXOmZX0+n0/QGyjkrxxr3gwF9JJBIPDjew1s5wl8UAjltrbw6QeTgAHmbPZoGIvDSqodb6bc8yYtt4dxSi/dOXR/Ph87Fc25GOfR3jWmJba28VkV5mvuyB3+V3QltxnT9iR0xr/UAtHcf6w89E8qGrkVyoEMmFCrG94ZO1SCQSiblE9DKX2ZIUkb6K37eLG1N/e08sbsy+LyLrrLV3VQs/loS1tpWZ1zDzDmYeAHCm3FIdwBUAL1Q1AsaYecz8o9+6n4i+qAW+kgQz5yt9xygt1ph5QVXwpQC4k4g2MvO/ZYqerRV++MiHT7kS7oaAB/oSEX0EwNQEXk7EGPOkiLzLzB8z80HvBuso+Gt/Xy79H82HL3olZmZnzlBKKWa+r3jpDIrILhHZAOCJpUuX3nZd4NWmLHx/61ORXOicA70umgsf9JMILH7wSik1QiAbejHSF5l6Q0lUgi8noJRSZSVy4dNNlxgL3k/ghpCoBr6SQKAS0VyrrQZ+LAE/idje8Mn4sfiUhgnEcm37q4GvRsBPomNf7JGGCbT3h1YUO7rc3t/aXaltNQJKXZOI5MMHSpfRnKNzptWf3MmsfOie9t3tHWO1q1ZAKaVUQbVEs61zF21fNO7f0uqemgRuxPwvEHSi2dDx4cdjNtwTNE/Naf8g0hnLh7+M5tqykb5I/X7P9cl/9yNRuL2UQtQAAAAASUVORK5CYII=" />
+  </h1>
+  
+  <!-- Client usage information -->
+  Drag and drop or select file to create and seed torrent
+  <br><br>
+  Select a file to upload:
+  <br><br>
+  
+  <!-- Actions and file input buttons -->
+  <button onclick="seedButton()">Seed File!</button>
+  <button onclick="clearButton()">Clear</button>
+  <input type="file" id="myFile" size="50">
+  <br><br>
+  <b>Webseed URL: </b>
+  <input type="text" id="webseed" name="webseed">
+  <br>
+
+  <!-- HTML elements -->
+  <code id="name"></code>
+  <code id="size"></code>
+  <code id="magnet"></code>
+  <code id="torrent"></code>
+  <code id="uploadspeed"></code>
+  <code id="seedratio"></code>
+  <code id="numberpeers"></code>
+  <code id="connectedpeers"></code>
+  <code id="error"></code>
+
+  <script>
+    // Creates instance of WebTorrent client
+    var client = new WebTorrent()
+
+    // Configuration for WebTorrent client 
+    trackers = []
+    var seedOpts = {
+      //announce: trackers,    // Torrent trackers to use (added to list in .torrent or magnet uri)
+      maxWebConns: 50,         // Max number of simultaneous connections per web seed [default=4]
+      //private: false,        // If true, client will not share the hash with the DHT nor with PEX (default is the privacy of the parsed torrent)
+    }
+
+    // Selects HTML elements and connects these with JavaScript variables
+    var $name = document.querySelector('#name')
+    var $size = document.querySelector('#size')
+    var $magnet = document.querySelector('#magnet')
+    var $torrent = document.querySelector('#torrent')
+    var $webseed = document.querySelector('#webseed')
+    var $uploadspeed = document.querySelector('#uploadspeed')
+    var $seedratio = document.querySelector('#seedratio')
+    var $numberpeers = document.querySelector('#numberpeers')
+    var $error = document.querySelector('#error')
+    var $connectedpeers = document.querySelector('#connectedpeers')
+
+    // Function to reset all fields in page
+    function clearButton() {
+      document.getElementById("webseed").value = '';
+      document.getElementById("myFile").value = '';
+      document.getElementById("myFile").files[0] = '';
+      location.reload();
+    }
+
+    // Function to start seeding file
+    function seedButton() {
+      var somefile = document.getElementById("myFile").files[0];
+      seed(somefile)
+    }
+
+    // Function to allow drag and dropping files on the body of page
+    dragDrop('body', function (files) {
+      seed(files)
+    })
+
+    // Function to seed files and store client information in the JavaScript variables
+    function seed(files) {
+      client.seed(files, seedOpts, function (torrent) {
+        var webseedurl = document.getElementById("webseed").value;
+        if (webseedurl !== null) {
+          console.log(webseedurl);
+          torrent.addWebSeed(webseedurl);
+        }
+        torrent.files.forEach(function (file) {
+          $name.innerHTML = '<br> Filename: ' + file.name;
+          $size.innerHTML = '<br> Size: ' + (prettyBytes(torrent.length)) + '<br>';
+          $magnet.innerHTML = ' <a href="' + torrent.magnetURI + '">Magnet URI</a> ';
+          $torrent.innerHTML = ' <a download="' + file.name + '.torrent" href="' + torrent.torrentFileBlobURL + '">Torrent File</a> ';
+        })
+        var upinter = setInterval(function () {
+          $uploadspeed.innerHTML = '<br> Upload Speed: ' + (prettyBytes(torrent.uploadSpeed));
+          $seedratio.innerHTML = '<br> Seed Ratio: ' + (torrent.ratio);
+          $numberpeers.innerHTML = '<b><br> Peers: ' + (torrent.numPeers) + '<b>';
+          $connectedpeers.innerHTML = '<b><br><br> Connected: <br></b>' + (torrent.wires.map(wire => wire.remoteAddress).join('<br>'));
+        }, 1000)
+      })
+    }
+
+    // Function to convert bytes to human readable format
+    function prettyBytes(num) {
+      var exponent, unit, neg = num < 0,
+        units = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+      if (neg) num = -num
+      if (num < 1) return (neg ? '-' : '') + num + ' B'
+      exponent = Math.min(Math.floor(Math.log(num) / Math.log(1000)), units.length - 1)
+      num = Number((num / Math.pow(1000, exponent)).toFixed(2))
+      unit = units[exponent]
+      return (neg ? '-' : '') + num + ' ' + unit
+    }
+  </script>
+</body>
+
+</html>

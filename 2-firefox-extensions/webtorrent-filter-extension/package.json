@@ -1,0 +1,10 @@
+{
+    "title": "WebTorrent Filter",
+    "description": "WebTorrent Filter",
+    "author": "Alexander47u - OS3",
+    "license": "MIT",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "web-ext build --overwrite-dest"
+    }
+}

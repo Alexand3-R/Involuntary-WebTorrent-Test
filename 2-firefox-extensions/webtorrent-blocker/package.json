@@ -1,0 +1,15 @@
+{
+    "title": "WebTorrent Blocker",
+    "description": "WebTorrent Blocker",
+    "author": "Alexander47u - OS3",
+    "license": "MIT",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "web-ext build --overwrite-dest"
+    },
+    "dependencies": {
+        "gulp": "^3.8.11",
+        "gulp-image-resize": "^0.6.0",
+        "gulp-rename": "^1.2.2"
+    }
+}

@@ -1,0 +1,63 @@
+{
+  // Extension description
+  "manifest_version": 2,
+  "name": "WebTorrent Blocker",
+  "author": "Alexander47 - OS3",
+  "version": "1.0.0",
+  "description": "Tries to detect and block WebTorrent usage.",
+
+  // Hotkey for enabling/disabling extension
+  "commands": {
+      "_execute_browser_action": {
+          "suggested_key": {
+              "default": "Ctrl+Alt+W"
+          }
+      }
+  },
+
+  "browser_action": {
+  // Icons for toolbar button
+    "default_icon": {
+      "16": "images/safe-16.png",
+      "32": "images/safe-32.png",
+      "48": "images/safe-48.png",
+      "64": "images/safe-64.png"
+    },
+
+  // Default text for toolbar button
+    "default_title": "WebTorrent Blocker is enabled!"
+  },
+
+  // Icon for extension
+  "icons": {
+    "16": "images/safe-16.png",
+    "32": "images/safe-32.png",
+    "48": "images/safe-48.png",
+    "64": "images/safe-64.png"
+  },
+
+  // Defines paths to background JavaScript files 
+  "background": {
+    "scripts": ["js/webtorrent_blocker.js"]
+  },
+
+  // Defines path to  JS userscript files 
+  "content_scripts": [{
+    "matches": ["<all_urls>"]
+  }],
+
+
+  // Defines permissions for extension
+  "permissions": [
+    "<all_urls>",
+    "storage"
+  ],
+
+  // Defines minimum Mozilla Firefox version
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "49.0"
+    }
+  }
+
+}
