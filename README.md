@@ -18,7 +18,7 @@ This includes simple WebTorrent clients that were written during the experiments
 
 ## 2 - Firefox Extensions
 
-This includes Mozilla Firefox extensions that were created to show that it is possible to run WebTorrent in the background of a browser by adding it to a browser extension and to show a method which attempts to detect and block the usage of the WebTorrent library. The extensions can be tested without installation using the about:debugging page.
+This includes Mozilla Firefox extensions that were created to show that it is possible to run WebTorrent in the background of a browser by adding it to a browser extension and to show a method which attempts to detect and block the usage of the WebTorrent library. The extensions can be tested without installation using the *about:debugging* page.
 
 <img align="left" width="40" height="40" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/othericon.png" alt="">
 
