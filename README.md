@@ -37,3 +37,6 @@ This includes a mixture of relevant data that was generated while conducting the
 <p align="center">
 <img title="" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/webtorrent-seeder-extension.gif" width="320px" height="400px" alt="" data-align="center">
 </p>
+
+## Author
+Alexander - OS3
