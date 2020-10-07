@@ -6,7 +6,7 @@ A collection of HTML documents, JavaScript files and Mozilla Firefox extensions 
 
 **Tested using Mozilla Firefox 76.0 browser**
 
-The collection of files were developed for a research project by a student of OS3. The goal was to determine whether involuntary browser-based peer-to-peer file sharing is possible using the WebTorrent library, which relies on JavaScript and WebRTC. These files are meant to help reproduce the experiments of the conducted research, which show that at the time of writing, it is possible to abuse the library.
+The collection of files were developed for a research project by a student of OS3. The goal was to determine whether involuntary browser-based peer-to-peer file sharing is possible using the WebTorrent library, which relies on JavaScript and WebRTC. These files are meant to help reproduce the experiments of the conducted research, which show that at the time of writing, 7th of October 2020, it is possible to abuse the library.
 
 <img align="left" width="40" height="40" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/uploadicon.png" alt="">
 
