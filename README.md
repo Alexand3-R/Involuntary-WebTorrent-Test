@@ -20,22 +20,16 @@ This includes a mixture of relevant data that was generated while conducting the
 
 ## <u>Showcase</u>
 
-### *WebTorrent Uploader + Stealth Downloader*
+### *WebTorrent Uploader + Stealth Downloader (left image) <br> Background Seeder Extension (right image)*
 
 <p align="center">
-<img title="" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/webtorrent-uploader-stealth-download.gif" width="320px" height="400px" alt="" data-align="center">
+<img title="" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/webtorrent-uploader-stealth-download.gif" width="320px" height="400px" alt="" data-align="center">  <img title="" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/webtorrent-seeder-extension.gif" width="320px" height="400px" alt="" data-align="center">
 </p>
 
 ### *WebTorrent Blocker Extension*
 
 <p align="center">
 <img title="" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/webtorrent-blocker-extension.gif" width="560px" height="400px" alt="" data-align="center">
-</p>
-
-### *WebTorrent Background Seeder Extension*
-
-<p align="center">
-<img title="" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/webtorrent-seeder-extension.gif" width="320px" height="400px" alt="" data-align="center">
 </p>
 
 ## Author
