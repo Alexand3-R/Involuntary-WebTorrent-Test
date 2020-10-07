@@ -28,7 +28,7 @@ This includes a mixture of relevant files that were generated while conducting t
 
 ## Showcase
 
-### *WebTorrent Uploader + Stealth Downloader (left image) <br> Background Seeder Extension (right image)*
+### *Stealth Downloader (left image) <br> Background Seeder Extension (right image)*
 
 <p align="center">
 <img title="" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/webtorrent-uploader-stealth-download.gif" width="320px" height="400px" alt="" data-align="center">&nbsp;&nbsp;&nbsp;&nbsp;<img title="" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/webtorrent-seeder-extension.gif" width="320px" height="400px" alt="" data-align="center">
