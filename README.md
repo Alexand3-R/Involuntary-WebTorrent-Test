@@ -40,5 +40,8 @@ This includes a mixture of relevant files that were generated while conducting t
 <img title="" src="https://raw.githubusercontent.com/alexander-47u/Involuntary-WebTorrent-Test/main/3-miscellaneous%20/showcase-images/webtorrent-blocker-extension.gif" width="560px" height="400px" alt="" data-align="center">
 </p>
 
+### TO-DO
+Add more detection strings for FF extensions.
+
 ## Author
 Alexander - OS3
