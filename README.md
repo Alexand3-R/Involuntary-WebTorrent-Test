@@ -24,7 +24,7 @@ This includes Mozilla Firefox extensions that were created to show that it is po
 
 ## 3 - Miscellaneous
 
-This includes a mixture of relevant files that were generated while conducting the research.
+This includes a mixture of relevant files, such as PublicWWW search results, that were generated while conducting the research.
 
 ## Showcase
 
